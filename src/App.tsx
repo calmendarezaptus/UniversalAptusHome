@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import 'animate.css'
 import {
   ArrowRight, Briefcase, Building2, CalendarCheck, CalendarClock, CalendarDays, CalendarRange, ChevronRight, Clock, Coins, FileText, HandCoins, History,
-  Hourglass, Landmark, LockOpen, Receipt, Scale, Search, Users, Wallet, X, type LucideIcon,
+  Hourglass, Landmark, LockOpen, Receipt, Scale, Stamp, FileCheck2, ReceiptText, Search, Users, Wallet, X, type LucideIcon,
 } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -15,10 +15,11 @@ const ICONOS: Record<Icono, LucideIcon> = {
   clock: Clock, receipt: Receipt, coins: Coins, calendar: CalendarDays, calendarClock: CalendarClock, calendarReceipt: CalendarRange,
   calendarCoins: CalendarCheck, unlock: LockOpen, fileText: FileText, handCoins: HandCoins, wallet: Wallet, hourglass: Hourglass,
   landmark: Landmark, briefcase: Briefcase, users: Users, building: Building2, scale: Scale,
+  stamp: Stamp, fileCheck: FileCheck2, receiptText: ReceiptText,
 }
 // El menú es esta misma página (sin ?origin= ni otros parámetros).
 const MENU_URL = window.location.origin + window.location.pathname
-const FLUJO = ['Capturar', 'Revisar', 'Liberar', 'Prebill', 'Facturar', 'Cobrar']
+const FLUJO = ['Capturar', 'Revisar', 'Liberar', 'Prebill', 'Facturar', 'CFDI', 'Cobrar']
 
 function App() {
   const [theme, setTheme] = useTheme()

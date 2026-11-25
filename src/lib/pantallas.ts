@@ -1,9 +1,9 @@
 // Catálogo de pantallas de Aptus (una Slate cada una), agrupadas en el orden en que se trabaja:
-// capturar → revisar → facturar → cobrar → reportes, más la configuración.
+// capturar → revisar → facturar → CFDI → cobrar → reportes, más la configuración.
 // Cada enlace lleva ?organization_id= y, salvo en las capturas, ?origin= al menú, para que su
 // "Regresar" vuelva aquí. Las capturas regresan a su calendario después de guardar.
 export type Icono = 'clock' | 'receipt' | 'coins' | 'calendar' | 'calendarClock' | 'calendarReceipt' | 'calendarCoins' | 'unlock' | 'fileText'
-  | 'handCoins' | 'wallet' | 'hourglass' | 'landmark' | 'briefcase' | 'users' | 'building' | 'scale'
+  | 'handCoins' | 'wallet' | 'stamp' | 'fileCheck' | 'receiptText' | 'hourglass' | 'landmark' | 'briefcase' | 'users' | 'building' | 'scale'
 
 export interface Pantalla {
   id: string; titulo: string; descripcion: string; icono: Icono; slate: string
@@ -37,6 +37,14 @@ export const SECCIONES: Seccion[] = [
     pantallas: [
       { id: 'liberaciones', titulo: 'Liberaciones', descripcion: 'Libera tiempos, gastos y honorarios para que entren a una Prebill.', icono: 'unlock', slate: slate('universal-aptus-liberaciones'), regresaAlMenu: true, palabras: 'liberar' },
       { id: 'prebills', titulo: 'Prebills', descripcion: 'Crear, revisar, autorizar, imprimir y facturar en Books.', icono: 'fileText', slate: slate('universal-aptus-prebills'), regresaAlMenu: true, palabras: 'factura prefactura imprimir' },
+    ],
+  },
+  {
+    id: 'cfdi', titulo: 'CFDI', descripcion: 'Timbrar, consultar y cancelar facturas electrónicas (hoy en modo prueba).', color: '#0369a1',
+    pantallas: [
+      { id: 'cfdi-pendientes', titulo: 'CFDI por timbrar', descripcion: 'Facturas sin CFDI: vista previa y timbrado.', icono: 'stamp', slate: slate('universal-aptus-cfdi-portimbrar'), regresaAlMenu: true, palabras: 'timbrar factura electronica sat' },
+      { id: 'cfdi-emitidos', titulo: 'CFDI emitidos', descripcion: 'XML, PDF, estatus ante el SAT y cancelación.', icono: 'fileCheck', slate: slate('universal-aptus-cfdi-emitidos'), regresaAlMenu: true, palabras: 'cancelar uuid acuse sat' },
+      { id: 'cfdi-pagos', titulo: 'Complementos de pago', descripcion: 'Pagos a facturas PPD que necesitan su complemento.', icono: 'receiptText', slate: slate('universal-aptus-cfdi-pagos'), regresaAlMenu: true, palabras: 'ppd rep complemento pago' },
     ],
   },
   {

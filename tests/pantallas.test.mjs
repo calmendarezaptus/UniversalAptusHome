@@ -8,11 +8,11 @@ const read = file => fs.readFileSync(new URL(file, import.meta.url), 'utf8')
 const lib = await import(toModule(read('../src/lib/pantallas.ts')))
 const MENU = 'https://universal-aptus-home.onslate.com/'
 
-test('catálogo: 17 pantallas, ids y Slates únicos, todas en onslate.com', () => {
+test('catálogo: 20 pantallas, ids y Slates únicos, todas en onslate.com', () => {
   const todas = lib.todas()
-  assert.equal(todas.length, 17)
-  assert.equal(new Set(todas.map(p => p.id)).size, 17)
-  assert.equal(new Set(todas.map(p => p.slate)).size, 17)
+  assert.equal(todas.length, 20)
+  assert.equal(new Set(todas.map(p => p.id)).size, 20)
+  assert.equal(new Set(todas.map(p => p.slate)).size, 20)
   for (const p of todas) assert.match(p.slate, /^https:\/\/universal-[a-z-]+\.onslate\.com\/$/, p.id)
 })
 
@@ -31,6 +31,6 @@ test('búsqueda sin acentos, por título, descripción, palabras clave o secció
   assert.deepEqual(ids('iguala'), ['fijo', 'cal-fijos'])
   assert.deepEqual(ids('configuracion abogados'), ['abogados'])
   assert.deepEqual(ids('reporte 03'), ['ingresos'])
-  assert.ok(ids('').length === 17)
+  assert.ok(ids('').length === 20)
   assert.deepEqual(ids('zzz'), [])
 })
